@@ -50,14 +50,16 @@ alias ls='lsd --group-dirs=first'
 alias cat='batcat --paging=never'
 alias catn='/bin/cat'
 # alias custom
-alias responder='python2 /opt/Responder/Responder.py'
-alias smbfolder='sudo python3 "$(locate smbserver.py | head -n 1)" smbFolder . -smb2support'
 alias ..='cd ..'
 alias thm='sudo openvpn /home/h1dr0/Escritorio/THM/thm.ovpn &'
 alias htb='sudo openvpn /home/h1dr0/Escritorio/HTB/htb_machines.ovpn &'
 alias x='chmod +x'
 alias s='source'
 alias target='cat /home/h1dr0/.config/bin/target'
+alias xml2html='xsltproc targeted.xml > index.html'
+alias python-ftp='sudo python -m pyftpdlib -p 69 -w -u h1dr0 -P 12345'
+alias responder='python2 /opt/Responder/Responder.py'
+alias smbfolder='sudo python3 "$(locate smbserver.py | head -n 1)" smbFolder . -smb2support'
 
 #Plugins
 source  /home/h1dr0/.zsh/plugins/zsh-sudo/sudo.plugin.zsh
