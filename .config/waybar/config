@@ -1,0 +1,42 @@
+// Global
+{
+    "layer": "top",
+    "position": "bottom",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 30,
+
+    // Load Modules
+    "include": [
+        "~/.config/waybar/themes/h1dr0B4r/modules.json"
+    ],
+
+	"modules-left": [
+		"custom/launch_wofi", 
+		//"custom/weather",
+		"clock",
+		"idle_inhibitor",
+		//"custom/firefox", 
+		"custom/hackthebox", 
+		"custom/target"
+	],
+    "modules-center": [
+	"hyprland/workspaces", 
+	"hyprland/mode"
+    ],
+    "modules-right": [
+    "group/hardware",
+	"custom/updates",
+	"network", 
+	"pulseaudio",
+//	"cpu", 
+//	"memory", 
+        //"custom/PBPbattery",
+//  "battery", 
+    "tray",
+//  "backlight#icon",
+	"custom/power_btn"
+    ],
+}

@@ -58,15 +58,13 @@ tooltip {
 #custom-weather,
 #custom-myhyprv,
 #window,
-#cpu,
-#disk,
 #custom-updates,
-#memory,
 #clock,
 #battery,
 #pulseaudio,
 #network,
 #tray,
+#custom-system,
 #idle_inhibitor,
 #temperature,
 #workspaces,
@@ -79,21 +77,21 @@ tooltip {
     border: 0px;
 }
 
-/* close to left */
+/*
 #cpu {
     color: #f9e2af;
     border-radius: 10px 0px 0px 10px;
     border-left: 0px;
     border-right: 0px;
 }
-/*close to right*/
+
 #memory {
     color: #cba6f7;
     border-left: 0px;
     border-right: 0px;
     border-radius: 0px 10px 10px 0px;
     margin-right: 10px;
-}
+}*/
 
 #idle_inhibitor {
 
@@ -113,7 +111,7 @@ tooltip {
 }
 #custom-power_btn {
     border-radius: 0px 10px 10px 0px;
-    margin-right: 5px;
+    margin-right: 0px;
 }
 
 #temperature.critical {
@@ -125,14 +123,6 @@ tooltip {
     margin-left: 10px;
     padding-right: 0px;
     padding-left: 5px;
-}
-
-/* close to left */
-#tray {
-    color: #f9e2af;
-    border-radius: 10px 0px 0px 10px;
-    border-left: 0px;
-    border-right: 0px;
 }
 
 #custom-power_profile {
@@ -161,16 +151,17 @@ tooltip {
 
 #network {
     color: #f9e2af;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 5px 0px 0px 5px;
     border-left: 0px;
     border-right: 0px;
+    margin-left: 10px;
 }
 
 #pulseaudio {
     color: #89b4fa;
     border-left: 0px;
     border-right: 0px;
-	border-radius: 0px 10px 10px 0px;
+	border-radius: 0px 5px 5px 0px;
     margin-right: 10px;
 }
 
@@ -194,11 +185,50 @@ tooltip {
 
 #custom-hackthebox {
      color: #e2ee6a;
-     border-radius: 10px;                              margin-left: 10px;
+     border-radius: 10px;
+     margin-left: 10px;
 	 margin-right: 10px;
 }
 
  #custom-target {
-     border-radius: 10px;                              margin-left: 10px;
+     border-radius: 10px;
+     margin-left: 10px;
 	 margin-right: 10px;
 }
+
+/* -----------------------------------------------------
+ * Hardware Group
+ * ----------------------------------------------------- */
+
+#custom-system {
+    border-radius: 10px 10px 10px 10px;
+}
+
+#disk,#memory,#cpu,#language {
+    margin:0px;
+    padding:0px;
+    font-size:16px;
+    color:@iconcolor;
+}
+
+#language {
+    margin-right:10px;
+}
+
+/* -----------------------------------------------------
+ * Tray
+ * ----------------------------------------------------- */
+
+#tray {
+    padding: 0px 15px 0px 0px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
