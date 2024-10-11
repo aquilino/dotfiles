@@ -27,7 +27,7 @@
             "1": "",
             "2": "",
             "3": "",
-            "4": "",
+            "4": ""
         }
     },
 /*
@@ -69,14 +69,14 @@
         "format-disconnected": "Disconnected ⚠",
         "tooltip-format": "{ifname} ({essid}): {ipaddr}",
         "format-alt": "{ifname}: <span color='#c7f607'>{ipaddr}</span>",
-        "on-click-right": "xfce4-terminal -e 'nmtui'",
+        "on-click-right": "xfce4-terminal -e 'nmtui'"
     },
 
     "network#vpn": {
         "interface": "tun0",
         "format": "  {essid} ({signalStrength}%)",
         "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
     },
 
     "bluetooth": {
@@ -93,12 +93,12 @@
     "custom/weather": {
         "exec": "/home/h1dr0/.config/waybar/themes/scripts/weather.sh tarragona", 
         "return-type": "json",
-        "interval": 600,
+        "interval": 600
     },
 
     "tray": {
         "icon-size": 18,
-        "spacing":10,
+        "spacing":10
      },
 
     "backlight#icon": {
@@ -142,9 +142,15 @@
 
     // Power Menu
     "custom/power_btn": {
+<<<<<<< Updated upstream:.config/waybar/modules.json
         "format": "",
         "on-click": "wlogout",
         "tooltip-format": "Power Menu",
+=======
+        "format":"⏻",
+        "on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+        "tooltip": false
+>>>>>>> Stashed changes:.config/waybar/config.jsonc
     },
 
     "pulseaudio": {
@@ -166,7 +172,7 @@
         },
         "on-click": "pavucontrol",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%"
     },
 
     "cpu": {
@@ -215,8 +221,13 @@
     },
 
     "custom/PBPbattery": {
+<<<<<<< Updated upstream:.config/waybar/modules.json
         "exec": "/home/h1dr0/.config/waybar/themes/scripts/PBPbattery.sh",
         "format": "{}",
+=======
+        "exec": "~/.config/waybar/scripts/PBPbattery.sh",
+        "format": "{}"
+>>>>>>> Stashed changes:.config/waybar/config.jsonc
     },
 
     "clock": {
