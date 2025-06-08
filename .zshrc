@@ -86,7 +86,7 @@ function rmk(){
 
 funtion settarget(){
 	if [ $# -eq 1 ]; then
-	echo -e '󰓾:'$1 > /home/h1dr0/.config/bin/target
+	echo $1 > /home/h1dr0/.config/bin/target
 #	gsettings --schemadir $HOME/.local/share/gnome-shell/extensions/simple-message@freddez/schemas set org.gnome.shell.extensions.simple-message message $1
 	elif [ $# -gt 2 ]; then
 	echo "settarget [IP] [NAME] @ settarget [IP]"
