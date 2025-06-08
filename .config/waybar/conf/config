@@ -1,0 +1,318 @@
+// Global
+{
+    "layer": "top",
+    "position": "bottom",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 30,
+/*    "include": [
+      "~/.config/waybar/modules/modules.json"
+    ],
+*/
+	"modules-left": [
+		"custom/launch_wofi", 
+		//"custom/weather",
+		"clock",
+		"idle_inhibitor",
+		//"custom/firefox", 
+		"custom/hackthebox", 
+		"custom/target",
+	],
+	
+    "modules-center": [
+	"sway/workspaces", 
+	"sway/mode"
+    ],
+
+    "modules-right": [
+	"custom/updates",
+    "group/hardware",
+//	"network", 
+	"custom/ip",
+   "bluetooth",
+	"pulseaudio",
+//	"cpu", 
+//	"memory", 
+//  "custom/PBPbattery",
+//  "battery", 
+    "tray",
+//  "backlight#icon",
+	"custom/power_btn"
+    ],
+    
+    "sway/mode": {
+        "format": "{}",
+        "tooltip": false
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 120
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup" : false,
+        "all-outputs": true,
+        "format": "  {icon}  ",
+        //"format":"{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+	        "5": "󱩼",
+            "6": "",	
+        }
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰛐",
+            "deactivated": "󰛑"
+        },
+        "tooltip": true
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
+        "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
+        "min-length": 6
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "family": "ipv4",
+	"format-wifi": "   {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format": "{ifname} ({essid}): {ipaddr}",
+        "format-alt": "{ifname}: <span color='#c7f607'>{ipaddr}</span>",
+        "on-click-right": "xfce4-terminal -e 'nmtui'",
+    },
+
+    "network#vpn": {
+        "interface": "tun0",
+        "format": "  {essid} ({signalStrength}%)",
+        "format-disconnected": "⚠  Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+    },
+/*
+    "bluetooth": {
+	  "format": " {status}",
+	  "format-disabled": "", // an empty format will hide the module
+	  "format-connected": " {num_connections}",
+	  "tooltip-format": "{device_alias}",
+	  "tooltip-format-connected": " {device_enumerate}",
+	  "tooltip-format-enumerate-connected": "{device_alias}"
+    },*/
+
+  // Bluetooth
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "",
+    "format-off": "",
+    "interval": 30,
+    "on-click": "blueman-manager",
+    "format-no-controller": ""
+  },
+
+    // to use the weather module replace <your_location> with your city or town
+    // note: do not use spaces: new york would be newyork
+    "custom/weather": {
+        "exec": "~/.config/waybar/scripts/weather.sh tarragona", 
+        "return-type": "json",
+        "interval": 600,
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing":10,
+     },
+
+    "backlight#icon": {
+        "format": "{icon}",
+        "format-icons": [""],
+        "on-scroll-down": "brightnessctl -c backlight set 1%-",
+        "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+
+    "backlight#value" :{
+         "format": "{percent}%",
+         "on-scroll-down": "brightnessctl -c backlight set 1%-",
+         "on-scroll-up": "brightnessctl -c backlight set +1%"
+    },
+
+    "custom/firefox": {
+        "format": " ",
+        "on-click": "exec firefox",
+        "tooltip": false
+    },
+
+    "custom/terminal": {
+        "format": " ",
+        "on-click": "exec kitty",
+        "tooltip": false
+    },
+
+    "custom/files": {
+        "format": "",
+        "on-click": "exec thunar",
+        "tooltip": false
+    },
+
+    "custom/launch_wofi": {
+        "format": "",
+        "on-click": "pkill wofi || wofi -n -c ~/.config/wofi/config-bmenu",
+        "on-click-right": "~/.config/waybar/scripts/keyhint.sh",
+        "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
+    },
+// Power Menu
+  "custom/power_btn": {
+    "format": "",
+//        "tooltip-format": "Power Menu",
+    "on-click": "exec ~/.config/waybar/scripts/wlogout.sh",
+    "on-click": "wlogout",
+    "on-click-right": "exec /home/h1dr0/.config/sway/scripts/lock.sh",
+    "tooltip-format": "Left: Power menu\nRight: Lock screen"
+/*
+    "custom/power_btn": {
+        "format":"",
+        "on-click": "exec ~/.config/waybar/scripts/power-menu.sh",
+        "on-click-right": "swaylock",
+        "tooltip-format": "Left: Power menu\nRight: Lock screen"
+    },
+*/
+    "pulseaudio": {
+        "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "󰝟 {icon}  {format_source}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "  ",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
+    },
+    "cpu": {
+        "interval": 10,
+        "format": "   {usage}% ",
+        "max-length": 10,
+        "format-alt-click": "click-right",
+        "format-alt": " ",
+        "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "   {}% ",
+        "format-alt-click": "click-right",
+        "format-alt": " ",
+        "max-length": 10,
+        "tooltip": true,
+        "tooltip-format": "Memory - {used:0.1f}GB used",
+        "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
+    },
+
+   // Harddisc space used
+   "disk": {
+     "interval": 30,
+     "format": "D {percentage_used}% ",
+     "path": "/",
+     "on-click": "kitty --start-as=fullscreen --title btop sh -c 'btop'"
+   },
+
+   "sway/language": {
+     "format": "  K {short}"
+   },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+    "custom/PBPbattery": {
+        "exec": "~/.config/waybar/scripts/PBPbattery.sh",
+        "format": "{}",
+    },
+
+    "clock": {
+        "interval": 10,
+        "format-alt": " {:%e %b %Y}", // Icon: calendar-alt
+        "format": "{:%H:%M}",
+        "tooltip-format": "  {:%A, %e %B %Y}"
+    },
+
+
+   "custom/updates": {
+        "format": "{}",
+        "return-type": "json",
+        "exec": "/home/h1dr0/.config/waybar/scripts/update-sys",
+        "on-click": "/home/h1dr0/.config/waybar/scripts/update-sys update",
+        "interval": 300,
+        "hide-if-empty": true,
+        "tooltip": true
+    }, 
+
+    "custom/hackthebox": {
+	"interval": 5,
+	"format": "<span color='#49FF3D'></span> {}",
+	"exec": "/home/h1dr0/.config/waybar/scripts/hackthebox.sh",
+	"on-click": "/usr/sbin/ifconfig tun0 2>/dev/null | grep 'inet ' | awk '{print $2}'|cliphist store"
+    },
+
+    "custom/target": {
+	"interval": 5,
+	"format": "<span color='#52f519'> </span> <span color='#c7f607'>{}</span>",
+	"exec": "/home/h1dr0/.config/waybar/scripts/target_to_hack.sh",
+	"on-click": "cat /home/h1dr0/.local/bin/target | awk '{print $1}'| cliphist store"
+    },
+   // System
+   "custom/system": {
+    "format": "",
+     "tooltip": false
+   },
+
+   // Group Hardware
+   "group/hardware": {
+     "orientation": "inherit",
+     "drawer": {
+       "transition-duration": 300,
+       "children-class": "not-memory",
+       "transition-left-to-right": false
+     },
+     "modules": ["custom/system", "disk", "cpu", "memory", "sway/language"]
+   },
+   "custom/ip": {
+	  "format": "{}",
+	  "exec": "~/.config/waybar/scripts/ip.sh",
+	  "interval": 5,
+	  "return-type": "json",
+     "on-click-right": "kitty --start-as=normal --title wifi sh -c 'nmtui'"
+	},
+}

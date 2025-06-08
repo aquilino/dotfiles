@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1747854565711968-1</unique-id>
+	<command>kitty %f</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>folder</icon>
+	<name>Open Thunar as root here</name>
+	<submenu></submenu>
+	<unique-id>1749395235178105-1</unique-id>
+	<command>gksu thunar %f</command>
+	<description>open folder with root user</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+</action>
+<action>
+	<icon>edit-copy</icon>
+	<name>Comparar</name>
+	<submenu></submenu>
+	<unique-id>1749395391298493-2</unique-id>
+	<command>meld %F</command>
+	<description>Compare archivos o directorios</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>gtk-ok</icon>
+	<name>Crear enlace simbolico</name>
+	<submenu></submenu>
+	<unique-id>1749395572693011-3</unique-id>
+	<command>ln -s %f &apos;%n(enlace)&apos;</command>
+	<description>Crea un enlace simbolico de archivos o carpetas</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<text-files/>
+</action>
+</actions>

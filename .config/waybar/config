@@ -1,0 +1,35 @@
+{
+  "layer": "top",
+  "position": "bottom",
+	"modules-left": [
+		"custom/launch_wofi", 
+		//"custom/weather",
+		"clock",
+		"idle_inhibitor",
+		//"custom/firefox", 
+		"custom/hackthebox", 
+		"custom/target",
+	],
+	
+    "modules-center": [
+	"sway/workspaces", 
+	"sway/mode"
+    ],
+
+    "modules-right": [
+	"custom/updates",
+    "group/hardware",
+//	"network", 
+	"custom/ip",
+    "bluetooth",
+	"pulseaudio",
+//	"cpu", 
+//	"memory", 
+//  "custom/PBPbattery",
+//  "battery", 
+    "tray",
+//  "backlight#icon",
+	"custom/power_btn"
+  ],
+  "include": "/home/h1dr0/.config/waybar/modules/modules.json"
+}

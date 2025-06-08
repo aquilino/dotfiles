@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Solo Arch
+[ ! -f /etc/arch-release ] && exit 0
+
+# Comandos necesarios
+command -v yay >/dev/null || exit 1
+command -v checkupdates >/dev/null || exit 1
+
+# Ejecutar actualización si se pasa como argumento
+if [ "$1" = "update" ]; then
+    setsid kitty --class floating-update -e bash -c "yay -Syu; read -n 1 -s -r -p 'Presiona una tecla para cerrar...'" &
+    exit 0
+fi
+
+# Conteos
+AUR=$(yay -Qua 2>/dev/null | wc -l)
+OFFICIAL=$(checkupdates 2>/dev/null | wc -l)
+TOTAL=$((AUR + OFFICIAL))
+
+# Sin actualizaciones: ocultar módulo
+if [ "$TOTAL" -eq 0 ]; then
+    echo '{"text": ""}'
+    exit 0
+fi
+
+# Iconos:  (pacman),  (AUR),  (actualizaciones)
+TOOLTIP="  $OFFICIAL oficiales\n  $AUR AUR"
+
+# Mostrar salida JSON con ícono principal
+printf '{"text": "  %s", "tooltip": "%s"}\n' "$TOTAL" "$TOOLTIP"
+
+
+
